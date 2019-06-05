@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.project.appstreetassignment.data.restApi.Repository;
+import com.project.appstreetassignment.data.Repository;
 
 import javax.inject.Inject;
 
