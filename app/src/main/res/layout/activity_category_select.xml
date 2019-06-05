@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Categories.CategorySelect">
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/appstreetlogo" />
+
+    <Spinner
+        android:id="@+id/country"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/logo"
+        android:layout_marginLeft="@dimen/marginCategory"
+        android:layout_marginRight="@dimen/marginCategory"
+        android:layout_marginTop="@dimen/marginCategory"
+        android:layout_marginBottom="@dimen/marginCategory"
+        android:background="@drawable/spinnerbackground"
+        ></Spinner>
+
+    <Spinner
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/country"
+        android:background="@drawable/spinnerbackground"
+        android:layout_marginLeft="@dimen/marginCategory"
+        android:layout_marginRight="@dimen/marginCategory"
+        android:layout_marginBottom="@dimen/marginCategory"></Spinner>
+
+    <Button
+        android:id="@+id/clickEvent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/category"
+        android:layout_marginLeft="@dimen/marginCategoryButton"
+        android:layout_marginRight="@dimen/marginCategoryButton"
+        android:text="Proceed"></Button>
+
+</RelativeLayout>

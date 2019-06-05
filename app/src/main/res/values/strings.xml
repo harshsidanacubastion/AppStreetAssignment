@@ -1,12 +1,12 @@
 <resources>
-<string name="app_name">AppStreetAssignment</string>
-<string name="dummy_author_text">Author:</string>
-<string name="dummy_author_text_value">DummyText</string>
-<string name="dummy_title_text">Title:</string>
-<string name="dummy_title_text_value">DummyText</string>
-<string name="dummy_description_text">Description:</string>
-<string name="dummy_description_text_value">DummyText</string>
-<string name="dummy_Url_text">Url:</string>
-<string name="dummy_Url_text_value">DummyText</string>
+    <string name="app_name">AppStreetAssignment</string>
+    <string name="dummy_author_text">Author:</string>
+    <string name="dummy_author_text_value">DummyText</string>
+    <string name="dummy_title_text">Title:</string>
+    <string name="dummy_title_text_value">DummyText</string>
+    <string name="dummy_description_text">Description:</string>
+    <string name="dummy_description_text_value">DummyText</string>
+    <string name="dummy_Url_text">Url:</string>
+    <string name="dummy_Url_text_value">DummyText</string>
 
 </resources>

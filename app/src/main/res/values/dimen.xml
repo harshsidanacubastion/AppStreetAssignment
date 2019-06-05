@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="edittextpadding">10dp</dimen>
+    <dimen name="marginCategory">20dp</dimen>
+    <dimen name="marginCategoryButton">60dp</dimen>
+
 </resources>
