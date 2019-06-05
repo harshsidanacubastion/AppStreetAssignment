@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/news_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/default_image"
+        android:transitionName="Image_shared"
+
+
+        />
+
+    <TextView
+        android:id="@+id/authorTextHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_author_text"
+        android:layout_below="@+id/news_detail_image"
+        android:padding="@dimen/edittextpadding"
+        />
+    <TextView
+        android:id="@+id/authorvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_author_text_value"
+        android:layout_below="@+id/news_detail_image"
+        android:layout_toRightOf="@+id/authorTextHeading"
+        android:padding="@dimen/edittextpadding"
+        />
+
+    <TextView
+        android:id="@+id/titleTextHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_title_text"
+        android:layout_below="@+id/authorTextHeading"
+        android:padding="@dimen/edittextpadding"
+        />
+
+    <TextView
+        android:id="@+id/titleTextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_title_text_value"
+        android:layout_below="@+id/authorvalue"
+        android:layout_toRightOf="@+id/titleTextHeading"
+        android:padding="@dimen/edittextpadding"
+        android:transitionName="Text_Shared"
+
+        />
+    <TextView
+        android:id="@+id/descriptionTextHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_description_text"
+        android:layout_below="@+id/titleTextHeading"
+        android:padding="@dimen/edittextpadding"
+        android:transitionName="description_shared"
+
+        />
+    <TextView
+        android:id="@+id/descriptionTextvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_description_text_value"
+        android:layout_below="@+id/titleTextValue"
+        android:layout_toRightOf="@+id/descriptionTextHeading"
+        android:padding="@dimen/edittextpadding"
+        />
+
+    <TextView
+        android:id="@+id/urlTextHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_Url_text"
+        android:layout_below="@+id/descriptionTextHeading"
+        android:padding="@dimen/edittextpadding"
+        />
+    <TextView
+        android:id="@+id/urlTextvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_Url_text_value"
+        android:layout_below="@+id/descriptionTextvalue"
+        android:layout_toRightOf="@+id/urlTextHeading"
+        android:padding="@dimen/edittextpadding"
+        />
+</RelativeLayout>
