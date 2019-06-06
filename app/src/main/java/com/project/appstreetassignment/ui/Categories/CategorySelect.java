@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.project.appstreetassignment.R;
 import com.project.appstreetassignment.ui.InternetStatus;
@@ -55,19 +56,21 @@ public class CategorySelect extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (category.getSelectedItemPosition() != 0 && country.getSelectedItemPosition() != 0) {
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     if (InternetStatus.getInstance(getApplicationContext()).isOnline()) {
 
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        //((ItemData) country.getSelectedItem()).getValue()
+                        i.putExtra("OnlineStatus", "Online");
 
-//                        i.putExtra((ItemData) (country.getSelectedItem()).get);
-//                        i.putExtra();
-//                        i.putExtra();
-                        startActivity(i);
                     } else {
+                        i.putExtra("OnlineStatus", "Offline");
 
                     }
+                    i.putExtra("Country", ((ItemData) country.getSelectedItem()).getValue());
+                    i.putExtra("Category", ((ItemData) category.getSelectedItem()).getValue());
 
+                    startActivity(i);
+                } else {
+                    Toast.makeText(CategorySelect.this, "Please select valid status", Toast.LENGTH_SHORT).show();
                 }
 
             }
