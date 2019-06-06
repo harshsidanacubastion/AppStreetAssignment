@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -12,7 +14,7 @@ import com.project.appstreetassignment.R;
 import com.project.appstreetassignment.ui.InternetStatus;
 import com.project.appstreetassignment.ui.ItemData;
 import com.project.appstreetassignment.ui.StatusAdapter;
-import com.project.appstreetassignment.ui.main.MainActivity;
+import com.project.appstreetassignment.ui.newsList.NewsListActivity;
 
 import java.util.ArrayList;
 
@@ -27,10 +29,14 @@ public class CategorySelect extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_category_select);
         country = (Spinner) findViewById(R.id.country);
         category = (Spinner) findViewById(R.id.category);
         proceed = (Button) findViewById(R.id.clickEvent);
+        countryList=new ArrayList<>();
+        categoryList=new ArrayList<>();
 
         countryList.add(new ItemData("Please Select Country", "Please Select Country"));
         countryList.add(new ItemData("India", "in"));
@@ -48,7 +54,7 @@ public class CategorySelect extends AppCompatActivity {
         categoryList.add(new ItemData("Science", "science"));
         categoryList.add(new ItemData("Sports", "sports"));
         categoryList.add(new ItemData("Technology", "technology"));
-        country.setAdapter(new StatusAdapter(this, R.layout.spinner_item, R.id.txt, categoryList));
+        category.setAdapter(new StatusAdapter(this, R.layout.spinner_item, R.id.txt, categoryList));
 
 
         proceed.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +62,7 @@ public class CategorySelect extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (category.getSelectedItemPosition() != 0 && country.getSelectedItemPosition() != 0) {
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent i = new Intent(getApplicationContext(), NewsListActivity.class);
                     if (InternetStatus.getInstance(getApplicationContext()).isOnline()) {
 
                         i.putExtra("OnlineStatus", "Online");

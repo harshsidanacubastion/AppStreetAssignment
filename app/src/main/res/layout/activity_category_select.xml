@@ -11,37 +11,46 @@
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_above="@+id/inputTexts"
         android:src="@drawable/appstreetlogo" />
 
-    <Spinner
-        android:id="@+id/country"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@+id/logo"
-        android:layout_marginLeft="@dimen/marginCategory"
-        android:layout_marginRight="@dimen/marginCategory"
-        android:layout_marginTop="@dimen/marginCategory"
-        android:layout_marginBottom="@dimen/marginCategory"
-        android:background="@drawable/spinnerbackground"
-        ></Spinner>
+    <RelativeLayout
+        android:id="@+id/inputTexts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
 
-    <Spinner
-        android:id="@+id/category"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@+id/country"
-        android:background="@drawable/spinnerbackground"
-        android:layout_marginLeft="@dimen/marginCategory"
-        android:layout_marginRight="@dimen/marginCategory"
-        android:layout_marginBottom="@dimen/marginCategory"></Spinner>
+        <Spinner
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/marginCategory"
+            android:layout_marginTop="@dimen/marginCategory"
+            android:layout_marginRight="@dimen/marginCategory"
+            android:layout_marginBottom="@dimen/marginCategory"
+            android:background="@drawable/spinnerbackground"></Spinner>
+
+        <Spinner
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/country"
+            android:layout_marginLeft="@dimen/marginCategory"
+            android:layout_marginRight="@dimen/marginCategory"
+            android:layout_marginBottom="@dimen/marginCategory"
+            android:background="@drawable/spinnerbackground"></Spinner>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/clickEvent"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/category"
+        android:layout_below="@+id/inputTexts"
         android:layout_marginLeft="@dimen/marginCategoryButton"
         android:layout_marginRight="@dimen/marginCategoryButton"
-        android:text="Proceed"></Button>
+        android:background="@drawable/button_background"
+        android:text="Proceed"
+
+        android:textColor="@color/white"></Button>
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
 import com.project.appstreetassignment.data.Repository;
+import com.project.appstreetassignment.ui.newsList.NewsListViewModel;
 
 import javax.inject.Inject;
 
@@ -26,7 +27,9 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
 //        if (modelClass.isAssignableFrom(LoginViewModel.class)) {
 //            return (T) new LoginViewModel(repository);
 //        }
-
+        if (modelClass.isAssignableFrom(NewsListViewModel.class)) {
+            return (T) new NewsListViewModel(repository);
+        }
 
         throw new IllegalArgumentException("Unknown class name");
     }

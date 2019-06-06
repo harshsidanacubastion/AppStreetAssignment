@@ -13,7 +13,8 @@ public interface ApiInterface {
     Single<NewsResponse> fetchNews(
             @Query("country") String country,
             @Query("category") String category,
-            @Query("apiKey") String apiKey
+            @Query("apiKey") String apiKey,
+            @Query("page") long page
     );
 
 }

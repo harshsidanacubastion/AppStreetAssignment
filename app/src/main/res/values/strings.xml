@@ -8,5 +8,9 @@
     <string name="dummy_description_text_value">DummyText</string>
     <string name="dummy_Url_text">Url:</string>
     <string name="dummy_Url_text_value">DummyText</string>
+    <string name="dummy_Published_text">Published At:</string>
+    <string name="dummy_Published_text_value">DummyText</string>
+
+
 
 </resources>

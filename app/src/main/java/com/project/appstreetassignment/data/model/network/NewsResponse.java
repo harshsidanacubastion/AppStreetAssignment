@@ -13,7 +13,7 @@ public class NewsResponse {
     @SerializedName("totalResults")
     @Expose
     public Long totalResults;
-    @SerializedName("articleNws")
+    @SerializedName("articles")
     @Expose
     public List<ArticleNw> articleNws = null;
 
@@ -45,5 +45,14 @@ public class NewsResponse {
 
     public void setArticleNws(List<ArticleNw> articleNws) {
         this.articleNws = articleNws;
+    }
+
+    @Override
+    public String toString() {
+        return "NewsResponse{" +
+                "status='" + status + '\'' +
+                ", totalResults=" + totalResults +
+                ", articleNws=" + articleNws +
+                '}';
     }
 }

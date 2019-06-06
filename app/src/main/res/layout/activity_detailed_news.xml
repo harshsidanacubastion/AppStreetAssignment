@@ -128,6 +128,28 @@
                     android:layout_toRightOf="@+id/urlTextHeading"
                     android:padding="@dimen/edittextpadding"
                     android:text="@string/dummy_Url_text_value" />
+
+
+                <TextView
+                    android:id="@+id/publishedText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dummy_Published_text"
+                    android:padding="@dimen/edittextpadding"
+                    android:layout_below="@+id/urlTextHeading"
+
+                    />
+                <TextView
+                    android:id="@+id/publishedValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dummy_Published_text_value"
+                    android:layout_toRightOf="@+id/publishedText"
+                    android:padding="@dimen/edittextpadding"
+
+                    android:layout_below="@+id/urlTextvalue"
+
+                    />
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>

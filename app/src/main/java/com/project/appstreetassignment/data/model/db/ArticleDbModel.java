@@ -8,49 +8,39 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "article_table")
 public class ArticleDbModel {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "article_id")
     private int articleId;
 
-    @NonNull
     @ColumnInfo(name = "author")
     private String author;
-    @NonNull
     @ColumnInfo(name = "source_name")
     private String sourceName;
 
-    @NonNull
     @ColumnInfo(name = "title")
     private String title;
 
-    @NonNull
     @ColumnInfo(name = "description")
     private String description;
 
-    @NonNull
     @ColumnInfo(name = "imageBase64")
     private String imageBase64;
 
-    @NonNull
     @ColumnInfo(name = "url")
     private String url;
 
-    @NonNull
     @ColumnInfo(name = "published_at")
     private String publishedAt;
 
-    @NonNull
     @ColumnInfo(name = "content")
     private String content;
 
 
-    @NonNull
     @ColumnInfo(name = "country")
     private String country;
 
 
-    @NonNull
     @ColumnInfo(name = "category")
     private String category;
 
