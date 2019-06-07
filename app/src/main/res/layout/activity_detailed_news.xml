@@ -68,9 +68,9 @@
                         android:id="@+id/authorTextHeading"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/detail_news_heading_text_size"
                         android:padding="@dimen/edittextpadding"
-                        android:text="@string/dummy_author_text" />
+                        android:text="@string/dummy_author_text"
+                        android:textSize="@dimen/detail_news_heading_text_size" />
 
                     <TextView
                         android:id="@+id/authorvalue"
@@ -135,6 +135,7 @@
                         android:id="@+id/descriptionTextvalue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
                         android:layout_toRightOf="@+id/descriptionTextHeading"
                         android:padding="@dimen/edittextpadding"
                         android:text="@string/dummy_description_text_value"
@@ -142,6 +143,7 @@
 
                         />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/contentView"
                     android:layout_width="wrap_content"
@@ -160,17 +162,21 @@
 
                         />
 
-                    <TextView
-                        android:id="@+id/contentTextvalue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/contentTextHeading"
-                        android:padding="@dimen/edittextpadding"
-                        android:text="@string/dummy_content_text_value"
-                        android:textSize="@dimen/detail_news_heading_value_text_size"
 
-                        />
+
+                        <TextView
+                            android:id="@+id/contentTextvalue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/edittextpadding"
+                            android:text="@string/dummy_content_text_value"
+                            android:textSize="@dimen/detail_news_heading_value_text_size"
+                            android:layout_toRightOf="@+id/contentTextHeading"
+
+                            />
+
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/urlView"
                     android:layout_width="wrap_content"

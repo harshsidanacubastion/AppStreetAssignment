@@ -14,7 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 import com.bumptech.glide.Glide;
@@ -29,7 +29,7 @@ public class DetailedNews extends AppCompatActivity {
     ImageView newsImage;
     TextView authorText;
     TextView titleText;
-     TextView contentText;
+    TextView contentText;
     TextView descriptionText;
     TextView urlText;
     TextView publishedAtText;
@@ -90,9 +90,8 @@ public class DetailedNews extends AppCompatActivity {
         urlText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(urlText!=null && !urlText.equals(""))
-                {
-                    Uri uri = Uri.parse("http://"+urlText.toString());
+                if (urlText != null && !urlText.equals("")) {
+                    Uri uri = Uri.parse(urlText.getText().toString());
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
                 }
@@ -127,38 +126,39 @@ public class DetailedNews extends AppCompatActivity {
     }
 
     public void bindvalues() {
-        Toast.makeText(this, article.getUrl(), Toast.LENGTH_SHORT).show();
-        Glide.with(this)
-                .load(Uri.parse(article.getImageBase64()))
-                .into(newsImage);
-        if (article.getAuthor() != null) {
+        if (article.getImageBase64() != null) {
+            Glide.with(this)
+                    .load(Uri.parse(article.getImageBase64()))
+                    .into(newsImage);
+        }
+
+        if (article.getAuthor() != null && !article.getAuthor().equals("")) {
             authorText.setText(article.getAuthor());
         } else {
             authorText.setText("N/A");
         }
-
-        if (article.getTitle() != null) {
+        if (article.getTitle() != null && !article.getTitle().equals("")) {
             titleText.setText(article.getTitle());
         } else {
             titleText.setText("N/A");
         }
-
-        if (article.getDescription() != null) {
+        if (article.getDescription() != null && !article.getDescription().equals("")) {
             descriptionText.setText(article.getDescription());
         } else {
             descriptionText.setText("N/A");
         }
-        if (article.getContent() != null) {
+        if (article.getContent() != null && !article.getContent().equals("")) {
             contentText.setText(article.getContent());
         } else {
             contentText.setText("N/A");
         }
-        if (article.getUrl() != null) {
+        if (article.getUrl() != null && !article.getUrl().equals("")) {
+
             urlText.setText(article.getUrl());
         } else {
             urlText.setText("N/A");
         }
-        if (article.getPublishedAt() != null) {
+        if (article.getPublishedAt() != null && !article.getPublishedAt().equals("")) {
             publishedAtText.setText(article.getPublishedAt());
         } else {
             publishedAtText.setText("N/A");

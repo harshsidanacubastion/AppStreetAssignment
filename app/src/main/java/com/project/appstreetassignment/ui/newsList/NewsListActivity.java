@@ -1,9 +1,12 @@
 package com.project.appstreetassignment.ui.newsList;
 
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,6 +43,7 @@ public class NewsListActivity extends AppCompatActivity implements NewsListAdapt
     boolean isOnline = false;
     NewsListAdapter listAdapter;
     RecyclerView recyclerView;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,10 @@ public class NewsListActivity extends AppCompatActivity implements NewsListAdapt
         viewModel.fetchApiResponse().observe((LifecycleOwner) this, this::consumeApiResponse);
         viewModel.fetchDbResponse().observe((LifecycleOwner) this, this::consumeDbResponse);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         country = getIntent().getStringExtra("Country");
         category = getIntent().getStringExtra("Category");
@@ -89,7 +97,7 @@ public class NewsListActivity extends AppCompatActivity implements NewsListAdapt
         switch (apiResponse.status) {
 
             case LOADING:
-//                progressDialog.show();
+             progressDialog.show();
                 break;
 
             case SUCCESS:
@@ -107,7 +115,7 @@ public class NewsListActivity extends AppCompatActivity implements NewsListAdapt
                 break;
 
             case ERROR:
-//                progressDialog.dismiss();
+             progressDialog.dismiss();
                 Log.i("Harsh Sidana", apiResponse.error.toString());
                 Toast.makeText(NewsListActivity.this, "Something went wrong, Please try again.", Toast.LENGTH_SHORT).show();
                 break;
