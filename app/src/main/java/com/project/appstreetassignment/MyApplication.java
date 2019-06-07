@@ -5,7 +5,6 @@ import android.content.Context;
 import com.project.appstreetassignment.di.component.AppComponent;
 import com.project.appstreetassignment.di.component.DaggerAppComponent;
 import com.project.appstreetassignment.di.module.AppModule;
-import com.project.appstreetassignment.di.module.UtilsModule;
 
 public class MyApplication extends Application {
     AppComponent appComponent;
@@ -15,7 +14,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
-        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).utilsModule(new UtilsModule()).build();
+        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
     }
 
     public AppComponent getAppComponent() {

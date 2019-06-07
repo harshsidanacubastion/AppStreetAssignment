@@ -2,7 +2,7 @@ package com.project.appstreetassignment.data;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
+
 
 import com.project.appstreetassignment.data.db.SampleRoomDatabase;
 import com.project.appstreetassignment.data.model.Article;
@@ -46,7 +46,6 @@ public class Repository {
                     @Override
                     public ArticleData apply(NewsResponse newsResponse) throws Exception {
 
-                        Log.e("harsh", newsResponse.toString());
                         List<Article> articleList = new ArrayList<>();
                         for (ArticleNw articleNw : newsResponse.getArticleNws()) {
                             Article article = new Article(
@@ -66,63 +65,7 @@ public class Repository {
                         return new ArticleData(newsResponse.getTotalResults(), articleList);
                     }
                 });
-//
-//        return apiInterface.fetchNews(country, category, "d521212fa7b547c58bea0ad45070de80")
-//                .map(new Function<NewsResponse, SingleSource<ArticleData>>() {
-//                    @Override
-//                    public SingleSource<ArticleData> apply(NewsResponse newsResponse) throws Exception {
-//
-//
-//                        List<Single<String>> singles = new ArrayList<>();
-//
-//                        if (newsResponse.getStatus().equalsIgnoreCase("ok")) {
-//
-//                            for (int i = 0; i < newsResponse.getArticleNws().size(); i++) {
-//                                String base64 = "";
-//                                singles.add(fetchPhoto(newsResponse.getArticleNws().get(i).getUrlToImage())
-//                                        .onErrorReturnItem(base64));
-//                            }
-//                            return Single.zip(singles, new Function<Object[], ArticleData>() {
-//                                @Override
-//                                public ArticleData apply(Object[] objects) throws Exception {
-//
-//
-//
-//
-//                                    return null;
-//                                }
-//                            });
-//                        }
-//
-//                        if (newsResponse.getStatus().equalsIgnoreCase("ok")) {
-//                            if (newsResponse.getArticleNws() != null && apiResponse.getPhotos().getPhoto() != null && !apiResponse.getPhotos().getPhoto().isEmpty()) {
-//
-//                                for (int i = 0; i < apiResponse.getPhotos().getPhoto().size(); i++) {
-//                                    ImageData imageData = new ImageData();
-//                                    singles.add(fetchPhoto()
-//                                            .onErrorReturnItem(imageData));
-//                                }
-//
-//
-//                                return Single.zip(singles, new Function<Object[], List<ImageData>>() {
-//                                    @Override
-//                                    public List<ImageData> apply(Object[] objects) throws Exception {
-//                                        List<ImageData> imageDataList = new ArrayList<>();
-//                                        for (Object i : objects) {
-//                                            ImageData imageData = (ImageData) i;
-//                                            imageDataList.add(imageData);
-//                                        }
-//                                        return imageDataList;
-//                                    }
-//                                });
-//
-//                            }
-//                        }
-//                        return null;
-//
-//
-//                    }
-//                });
+
 
     }
 
@@ -131,7 +74,6 @@ public class Repository {
             @Override
             public void subscribe(final SingleEmitter<Article> emitter) throws Exception {
 
-                Log.e("harsh", "before");
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
                         .url(article.getUrl())
@@ -142,7 +84,6 @@ public class Repository {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         System.out.println("request failed: " + e.getMessage());
-                        Log.e("harsh", "eroor wala case  " + e.getMessage());
                         emitter.tryOnError(e);
                     }
 
@@ -175,9 +116,9 @@ public class Repository {
                                 country,
                                 category
                         );
-//                        article.setImageBase64(encoded);
+
+
                         db.sampleDao().insertAtricle(articleDbModel);
-                        Log.e("harsh", "after");
 
                         emitter.onSuccess(article);
                     }

@@ -1,4 +1,5 @@
 package com.project.appstreetassignment.ui.newsList;
+
 import android.app.ProgressDialog;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.ViewModelProviders;
@@ -24,13 +25,10 @@ import com.project.appstreetassignment.data.model.Article;
 import com.project.appstreetassignment.ui.detailNews.DetailedNews;
 import com.project.appstreetassignment.utils.ApiResponse;
 import com.project.appstreetassignment.utils.ViewModelFactory;
+
 import java.util.ArrayList;
 import java.util.List;
-import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
+
 
 import javax.inject.Inject;
 
@@ -98,6 +96,7 @@ public class NewsListActivity extends AppCompatActivity implements NewsListAdapt
         articleList.clear();
 
     }
+
     private void initScrollListener() {
 
         final int[] currentPage = {1};
@@ -124,7 +123,7 @@ public class NewsListActivity extends AppCompatActivity implements NewsListAdapt
                         viewModel.fetchDataFromApi(country, category, currentPage[0]);
                     }
                 }
-                          }
+            }
         });
 
 
@@ -132,9 +131,7 @@ public class NewsListActivity extends AppCompatActivity implements NewsListAdapt
 
     private void consumeDbResponse(Article article) {
         if (article == null) {
-            Toast.makeText(this, "Error in database update", Toast.LENGTH_SHORT).show();
-        } else {
-
+            Toast.makeText(this, "Error in database update", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -152,8 +149,19 @@ public class NewsListActivity extends AppCompatActivity implements NewsListAdapt
 
                 isLoading = false;
                 articleList.addAll(apiResponse.data.getArticleList());
-                listAdapter.setArticleList(articleList);
-                listAdapter.notifyDataSetChanged();
+                if (!isOnline) {
+                    if (articleList.size() == 0) {
+                        Toast.makeText(this, "No saved list found.Please check for internet connection and try again.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        listAdapter.setArticleList(articleList);
+                        listAdapter.notifyDataSetChanged();
+                    }
+
+                } else {
+                    listAdapter.setArticleList(articleList);
+                    listAdapter.notifyDataSetChanged();
+                }
+
 
                 if (isOnline)
                     for (Article article : apiResponse.data.getArticleList()) {
@@ -164,7 +172,6 @@ public class NewsListActivity extends AppCompatActivity implements NewsListAdapt
 
             case ERROR:
                 progressDialog.dismiss();
-                Log.i("Harsh Sidana", apiResponse.error.toString());
                 Toast.makeText(NewsListActivity.this, "Something went wrong, Please try again.", Toast.LENGTH_SHORT).show();
                 break;
 

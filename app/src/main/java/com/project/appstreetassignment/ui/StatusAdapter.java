@@ -54,13 +54,11 @@ public class StatusAdapter extends ArrayAdapter<ItemData> {
         View view = getView(position, convertView, parent);
         TextView tv = (TextView) view.findViewById(R.id.txt);
         if (position == 0) {
-            // Set the hint text color gray
             tv.setTextColor(Color.GRAY);
         } else {
             tv.setTextColor(Color.BLACK);
         }
         return view;
-//        return getView(position,convertView,parent);
 
     }
 }

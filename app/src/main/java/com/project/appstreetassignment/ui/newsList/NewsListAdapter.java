@@ -53,9 +53,6 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
 
     }
 
-    public List<Article> getArticleList() {
-        return articleList;
-    }
 
     public void setArticleList(List<Article> articleList) {
         this.articleList = articleList;
@@ -94,9 +91,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         if (articleList.get(i).getTitle() != null)
             myViewHolder.titleText.setText(articleList.get(i).getTitle());
         if (articleList.get(i).getImageBase64() != null) {
-//            Glide.with(context)
-//                    .load(Uri.parse(articleList.get(i).getImageBase64()))
-//                    .into(myViewHolder.imageIcon);
+
 
             if (isOnline) {
                 Log.e("harsh"," online");
@@ -118,29 +113,13 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
                         })
                         .into(myViewHolder.imageIcon);
             } else {
-                Log.e("harsh"," offline");
-                Log.e("harsh","  "+articleList.get(i).getImageBase64());
-                byte[] decodedString = Base64.decode(articleList.get(i).getImageBase64(), Base64.DEFAULT);
-                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-                myViewHolder.imageIcon.setImageBitmap(decodedByte);
-//                requestManager.load(decodedByte)
-//                        .listener(new RequestListener<Drawable>() {
-//                            @Override
-//                            public boolean onLoadFailed(@Nullable GlideException e, Object model,
-//                                                        Target<Drawable> target, boolean isFirstResource) {
-//                                Toast.makeText(context, "image load failed for index " + i, Toast.LENGTH_SHORT).show();
-//                                return false;
-//                            }
-//
-//                            @Override
-//                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable>
-//                                    target, DataSource dataSource, boolean isFirstResource) {
-//
-//                                return false;
-//                            }
-//                        })
-//                        .into(myViewHolder.imageIcon);
+
+
+                byte[] imgBytes = Base64.decode(articleList.get(i).getImageBase64(), Base64.NO_PADDING );
+                myViewHolder.imageIcon.setImageBitmap(BitmapFactory.decodeByteArray(imgBytes, 0, imgBytes.length));
+
+
             }
         }
 
