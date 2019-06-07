@@ -11,8 +11,8 @@
     <string name="dummy_Url_text">Url:</string>
     <string name="dummy_Url_text_value">N/A</string>
     <string name="dummy_Published_text">Published At:</string>
+    <string name="news_feed">News Feeds</string>
     <string name="dummy_Published_text_value">N/A</string>
-
 
 
 </resources>

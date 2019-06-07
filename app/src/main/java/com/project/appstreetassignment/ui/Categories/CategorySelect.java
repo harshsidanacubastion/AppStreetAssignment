@@ -1,6 +1,7 @@
 package com.project.appstreetassignment.ui.Categories;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.appstreetassignment.R;
@@ -15,6 +17,8 @@ import com.project.appstreetassignment.ui.InternetStatus;
 import com.project.appstreetassignment.ui.ItemData;
 import com.project.appstreetassignment.ui.StatusAdapter;
 import com.project.appstreetassignment.ui.newsList.NewsListActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -24,7 +28,8 @@ public class CategorySelect extends AppCompatActivity {
     Button proceed;
     ArrayList<ItemData> countryList;
     ArrayList<ItemData> categoryList;
-
+    TextView selectText;
+    Typeface selectTextFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +40,8 @@ public class CategorySelect extends AppCompatActivity {
         country = (Spinner) findViewById(R.id.country);
         category = (Spinner) findViewById(R.id.category);
         proceed = (Button) findViewById(R.id.clickEvent);
-        countryList=new ArrayList<>();
-        categoryList=new ArrayList<>();
+        countryList = new ArrayList<>();
+        categoryList = new ArrayList<>();
 
         countryList.add(new ItemData("Please Select Country", "Please Select Country"));
         countryList.add(new ItemData("India", "in"));
@@ -56,6 +61,10 @@ public class CategorySelect extends AppCompatActivity {
         categoryList.add(new ItemData("Technology", "technology"));
         category.setAdapter(new StatusAdapter(this, R.layout.spinner_item, R.id.txt, categoryList));
 
+
+        selectTextFont = Typeface.createFromAsset(getAssets(), "fonts/UniversLTStd-LightCn.otf");
+        selectText = (TextView) findViewById(R.id.selectText);
+        selectText.setTypeface(selectTextFont);
 
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override

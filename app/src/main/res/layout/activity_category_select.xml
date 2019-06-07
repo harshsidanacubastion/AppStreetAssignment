@@ -11,8 +11,20 @@
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_above="@+id/inputTexts"
+        android:layout_above="@+id/selectText"
         android:src="@drawable/appstreetlogo" />
+    
+    <TextView
+        android:id="@+id/selectText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select country and category."
+        android:layout_above="@+id/inputTexts"
+android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+
+        />
 
     <RelativeLayout
         android:id="@+id/inputTexts"
@@ -49,8 +61,7 @@
         android:layout_marginLeft="@dimen/marginCategoryButton"
         android:layout_marginRight="@dimen/marginCategoryButton"
         android:background="@drawable/button_background"
-        android:text="Proceed"
-
+        android:text="Fetch News"
         android:textColor="@color/white"></Button>
 
 </RelativeLayout>

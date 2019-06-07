@@ -162,8 +162,6 @@
 
                         />
 
-
-
                         <TextView
                             android:id="@+id/contentTextvalue"
                             android:layout_width="wrap_content"
@@ -201,6 +199,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/urlTextHeading"
                         android:padding="@dimen/edittextpadding"
+                       android:textColor="@color/blue"
                         android:text="@string/dummy_Url_text_value"
                         android:textSize="@dimen/detail_news_heading_value_text_size"
 
@@ -222,9 +221,7 @@
                         android:padding="@dimen/edittextpadding"
                         android:text="@string/dummy_Published_text"
                         android:textSize="@dimen/detail_news_heading_text_size"
-
                         />
-
                     <TextView
                         android:id="@+id/publishedValue"
                         android:layout_width="wrap_content"

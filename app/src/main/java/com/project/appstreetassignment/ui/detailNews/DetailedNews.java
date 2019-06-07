@@ -9,6 +9,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -55,8 +56,16 @@ public class DetailedNews extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_news);
+
+
+
+        position = getIntent().getIntExtra("position", -1);
+        article = NewsListActivity.articleList.get(position);
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            toolbar.setTitle(article.getAuthor());
+
             setSupportActionBar(toolbar);
             if (getSupportActionBar() != null) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -64,8 +73,7 @@ public class DetailedNews extends AppCompatActivity {
 
         }
 
-        position = getIntent().getIntExtra("position", -1);
-        article = NewsListActivity.articleList.get(position);
+
 
         newsImage = (ImageView) findViewById(R.id.newsImage);
         authorText = (TextView) findViewById(R.id.authorvalue);

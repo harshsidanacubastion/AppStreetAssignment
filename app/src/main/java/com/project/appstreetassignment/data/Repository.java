@@ -175,7 +175,7 @@ public class Repository {
                                 country,
                                 category
                         );
-                        article.setImageBase64(encoded);
+//                        article.setImageBase64(encoded);
                         db.sampleDao().insertAtricle(articleDbModel);
                         Log.e("harsh", "after");
 
