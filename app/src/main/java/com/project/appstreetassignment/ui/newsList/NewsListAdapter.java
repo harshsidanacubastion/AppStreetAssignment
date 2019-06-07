@@ -1,9 +1,15 @@
 package com.project.appstreetassignment.ui.newsList;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +27,13 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
     List<Article> articleList;
     Context context;
     boolean isOnline;
+    onClick onClick;
 
-    public NewsListAdapter(List<Article> articleList, Context context, boolean isOnline) {
+    public NewsListAdapter(List<Article> articleList, Context context, boolean isOnline, NewsListAdapter.onClick onClick) {
         this.articleList = articleList;
         this.context = context;
         this.isOnline = isOnline;
+        this.onClick = onClick;
     }
 
     public List<Article> getArticleList() {
@@ -36,24 +44,28 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         this.articleList = articleList;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView titleText;
         ImageView imageIcon;
+        CardView newsLayout;
+        private final Typeface newsTextFont;
 
 
         public MyViewHolder(final View view) {
             super(view);
+            newsTextFont = Typeface.createFromAsset(context.getAssets(), "fonts/UniversLTStd-LightCn.otf");
 
             titleText = (TextView) view.findViewById(R.id.newsTitle);
             imageIcon = (ImageView) view.findViewById(R.id.newsImage);
-
-
+            newsLayout = (CardView) view.findViewById(R.id.newsLayout);
+            titleText.setTypeface(newsTextFont);
         }
 
-        @Override
-        public void onClick(View v) {
 
-        }
+//        @Override
+//        public void onClick(View v) {
+//            onClick.onItemClick(getAdapterPosition());
+//        }
     }
 
     @NonNull
@@ -67,10 +79,29 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.titleText.setText(articleList.get(i).getTitle());
-        Glide.with(context)
-                .load(Uri.parse(articleList.get(i).getImageBase64()))
-                .into(myViewHolder.imageIcon);
+        if (articleList.get(i).getTitle() != null)
+            myViewHolder.titleText.setText(articleList.get(i).getTitle());
+        if (articleList.get(i).getImageBase64() != null) {
+            Glide.with(context)
+                    .load(Uri.parse(articleList.get(i).getImageBase64()))
+                    .into(myViewHolder.imageIcon);
+        }
+
+        myViewHolder.newsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityOptions options = null;
+                Pair[] pair = new Pair[1];
+                pair[0] = new Pair<View, String>(myViewHolder.imageIcon, "Image_shared");
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pair);
+                }
+
+                onClick.onItemClick(i, options.toBundle());
+
+            }
+        });
+
     }
 
 
@@ -79,8 +110,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         return articleList.size();
     }
 
-    public interface onClick
-    {
-        public void onItemClick(int position);
+    public interface onClick {
+        void onItemClick(int position, Bundle bundle);
     }
 }

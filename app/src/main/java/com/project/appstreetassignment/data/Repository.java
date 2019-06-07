@@ -40,13 +40,13 @@ public class Repository {
         this.apiInterface = apiInterface;
     }
 
-    public Single<ArticleData> fetchData(String country, String category,long pageNo) {
-        return apiInterface.fetchNews(country, category, "d521212fa7b547c58bea0ad45070de80",pageNo)
+    public Single<ArticleData> fetchData(String country, String category, long pageNo) {
+        return apiInterface.fetchNews(country, category, "d521212fa7b547c58bea0ad45070de80", pageNo)
                 .map(new Function<NewsResponse, ArticleData>() {
                     @Override
                     public ArticleData apply(NewsResponse newsResponse) throws Exception {
 
-                        Log.e("harsh",newsResponse.toString());
+                        Log.e("harsh", newsResponse.toString());
                         List<Article> articleList = new ArrayList<>();
                         for (ArticleNw articleNw : newsResponse.getArticleNws()) {
                             Article article = new Article(
@@ -131,7 +131,7 @@ public class Repository {
             @Override
             public void subscribe(final SingleEmitter<Article> emitter) throws Exception {
 
-Log.e("harsh","before");
+                Log.e("harsh", "before");
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
                         .url(article.getUrl())
@@ -142,7 +142,7 @@ Log.e("harsh","before");
                     @Override
                     public void onFailure(Call call, IOException e) {
                         System.out.println("request failed: " + e.getMessage());
-                        Log.e("harsh","eroor wala case  "+ e.getMessage());
+                        Log.e("harsh", "eroor wala case  " + e.getMessage());
                         emitter.tryOnError(e);
                     }
 
@@ -177,7 +177,7 @@ Log.e("harsh","before");
                         );
                         article.setImageBase64(encoded);
                         db.sampleDao().insertAtricle(articleDbModel);
-                        Log.e("harsh","after");
+                        Log.e("harsh", "after");
 
                         emitter.onSuccess(article);
                     }
